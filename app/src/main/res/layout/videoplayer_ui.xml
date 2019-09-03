@@ -4,44 +4,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@android:color/transparent">
-    <View
+        >
+    <ImageView
             android:id="@+id/panel"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.8"
+            app:layout_constraintDimensionRatio="5:4"
             android:clickable="true"
             android:focusable="true"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageButton
             android:id="@+id/stop_play"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_play"
             android:background="@android:color/transparent"
             android:layout_centerInParent="true"
-            app:layout_constraintEnd_toEndOf="@+id/panel" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@+id/panel" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/panel"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/panel"/>
     <ImageButton
             android:id="@+id/forward"
+            android:visibility="gone"
             android:layout_toRightOf="@id/stop_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_forward"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="@+id/panel"
-            app:layout_constraintTop_toTopOf="@+id/stop_play" app:layout_constraintStart_toEndOf="@+id/stop_play"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/stop_play"
+            app:layout_constraintStart_toEndOf="@+id/stop_play"
             android:layout_marginTop="10dp" android:layout_marginEnd="32dp"/>
     <ImageButton
             android:id="@+id/backward"
+            android:visibility="gone"
             android:layout_toLeftOf="@id/stop_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_backward"
             android:background="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="@+id/panel" app:layout_constraintTop_toTopOf="@+id/stop_play"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/stop_play"
             app:layout_constraintEnd_toStartOf="@+id/stop_play" android:layout_marginTop="10dp"
             android:layout_marginStart="32dp"/>
+    <ImageButton
+            android:id="@+id/big_play"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_play"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/panel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

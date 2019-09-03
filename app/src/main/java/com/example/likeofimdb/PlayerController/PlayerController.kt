@@ -22,6 +22,7 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
     val playStopButton:ImageButton
     val forwardButton:ImageButton
     val backwardButton:ImageButton
+    val bigPlayButton:ImageButton
     val playDrawable:Drawable
     val pauseDrawable:Drawable
     var isPlaying:Boolean=false
@@ -36,18 +37,29 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
         playStopButton=customView.findViewById<ImageButton>(R.id.stop_play)
         forwardButton=customView.findViewById(R.id.forward)
         backwardButton=customView.findViewById(R.id.backward)
+        bigPlayButton=customView.findViewById(R.id.big_play)
         playDrawable=this.context.resources.getDrawable(R.drawable.ic_play)
         pauseDrawable=this.context.resources.getDrawable(R.drawable.ic_pause)
         
     }
 
     override fun onStateChange(youTubePlayer: YouTubePlayer, state: PlayerConstants.PlayerState) {
-        if(state == PlayerConstants.PlayerState.PLAYING || state==PlayerConstants.PlayerState.PAUSED || state==PlayerConstants.PlayerState.VIDEO_CUED)
-            panel.setBackgroundColor(ContextCompat.getColor(context,android.R.color.transparent))
-        else
-            if (state == PlayerConstants.PlayerState.BUFFERING)
-                panel.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
-
+        if(state == PlayerConstants.PlayerState.PLAYING || state==PlayerConstants.PlayerState.PAUSED) {
+            playStopButton.visibility = View.VISIBLE
+            forwardButton.visibility = View.VISIBLE
+            backwardButton.visibility = View.VISIBLE
+            bigPlayButton.visibility = View.GONE
+            panel.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
+        }
+        else {
+            if (state == PlayerConstants.PlayerState.BUFFERING || state == PlayerConstants.PlayerState.VIDEO_CUED){
+                playStopButton.visibility = View.GONE
+                forwardButton.visibility = View.GONE
+                backwardButton.visibility = View.GONE
+                bigPlayButton.visibility = View.VISIBLE
+                panel.setBackgroundResource(R.drawable.warfare)
+            }
+        }
     }
 
 
