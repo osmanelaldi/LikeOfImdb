@@ -1,9 +1,11 @@
 package com.example.likeofimdb.PlayerController
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.example.likeofimdb.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
@@ -11,10 +13,11 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker
+import com.squareup.picasso.Picasso
 
-class PlayerController  (context: Context, customView:View, youTubePlayer: YouTubePlayer,youTubePlayerView: YouTubePlayerView ) : AbstractYouTubePlayerListener(){
+class PlayerController  (context: Context, customView:View, youTubePlayer: YouTubePlayer,youTubePlayerView: YouTubePlayerView, posterUrl : String ) : AbstractYouTubePlayerListener(){
     val playerUi:View
-    val panel:View
+    val panel: ImageView
     val context:Context
     val youTubePlayer:YouTubePlayer
     val youTubePlayerView:YouTubePlayerView
@@ -26,9 +29,11 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
     val playDrawable:Drawable
     val pauseDrawable:Drawable
     var isPlaying:Boolean=false
+    var posterUrl : String
     init {
         this.playerUi=customView
         this.context=context
+        this.posterUrl=posterUrl
         this.youTubePlayer=youTubePlayer
         this.youTubePlayerView=youTubePlayerView
         playerTracker= YouTubePlayerTracker()
@@ -49,7 +54,7 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
             forwardButton.visibility = View.VISIBLE
             backwardButton.visibility = View.VISIBLE
             bigPlayButton.visibility = View.GONE
-            panel.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
+            panel.setImageResource(android.R.color.transparent)
         }
         else {
             if (state == PlayerConstants.PlayerState.BUFFERING || state == PlayerConstants.PlayerState.VIDEO_CUED){
@@ -57,7 +62,7 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
                 forwardButton.visibility = View.GONE
                 backwardButton.visibility = View.GONE
                 bigPlayButton.visibility = View.VISIBLE
-                panel.setBackgroundResource(R.drawable.warfare)
+                Picasso.get().load(posterUrl).into(panel)
             }
         }
     }

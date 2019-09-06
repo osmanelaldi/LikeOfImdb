@@ -12,6 +12,7 @@
             app:layout_constraintDimensionRatio="5:4"
             android:clickable="true"
             android:focusable="true"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
