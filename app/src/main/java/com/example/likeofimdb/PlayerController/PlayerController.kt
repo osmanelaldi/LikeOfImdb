@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.example.likeofimdb.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -62,7 +63,7 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
                 forwardButton.visibility = View.GONE
                 backwardButton.visibility = View.GONE
                 bigPlayButton.visibility = View.VISIBLE
-                Picasso.get().load(posterUrl).into(panel)
+                Glide.with(context).load(posterUrl).into(panel)
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.likeofimdb
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,10 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.target.ImageViewTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.likeofimdb.PlayerController.PlayerController
 import com.example.likeofimdb.adapters.PhotoRecycler
 import com.example.likeofimdb.models.Film
@@ -42,25 +47,23 @@ class InspectFilm : AppCompatActivity() {
 
         Picasso.get().load(film.profileUrl).into(filmlogo)
 
+        Glide.with(this)
+            .asBitmap()
+            .load(film.posterUrl)
+            .into(object : CustomTarget<Bitmap>(){
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    Palette.from(resource).generate().dominantSwatch?.let {
 
-                Picasso.get().load(film.posterUrl).into(object : com.squareup.picasso.Target{
-                    override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
-                    override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
-                    override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                        GlobalScope.launch {
-                            bitmap?.let {
-                                Palette.from(it).generate(object : Palette.PaletteAsyncListener{
-                                    override fun onGenerated(palette: Palette?) {
-                                        palette?.darkVibrantSwatch?.let {
-                                            nested_view.setBackgroundColor(it.rgb)
-                                        }
-                                    }
-                                })
-                            }
-                        }
-
+                        nested_view.setBackgroundColor(it.rgb)
                     }
-                })
+                }
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    // this is called when imageView is cleared on lifecycle call or for
+                    // some other reason.
+                    // if you are referencing the bitmap somewhere else too other than this imageView
+                    // clear it here as you can no longer have the bitmap
+                }
+            })
 
 
 
