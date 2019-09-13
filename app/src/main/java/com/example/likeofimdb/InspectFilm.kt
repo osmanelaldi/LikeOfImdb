@@ -45,7 +45,7 @@ class InspectFilm : AppCompatActivity() {
         var youTubePlayerView = findViewById<YouTubePlayerView>(R.id.youtube_player)
         lifecycle.addObserver(youTubePlayerView)
 
-        Picasso.get().load(film.profileUrl).into(filmlogo)
+        Glide.with(this).load(film.profileUrl).into(filmlogo)
 
         Glide.with(this)
             .asBitmap()
@@ -77,7 +77,7 @@ class InspectFilm : AppCompatActivity() {
         metacritic.text = film.voteMetacritic + "\n Metacritic"
         description.text = film.description
 
-
+        
 
         val constraintSet = ConstraintSet()
         constraintSet.clone(constraintlayout)
@@ -89,14 +89,12 @@ class InspectFilm : AppCompatActivity() {
                         this@InspectFilm,
                         customPlayerUi,
                         youTubePlayer,
-                        youTubePlayerView,
-                        film.posterUrl!!
+                        youTubePlayerView
                     )
                 youTubePlayer.addListener(playerController)
                 film.videoUrl?.let {
                     youTubePlayer.cueVideo(it, 0f)
                 }
-
                 playerController.playStopButton.setOnClickListener {
                     if (playerController.playerTracker.state == PlayerConstants.PlayerState.PLAYING) {
                         youTubePlayer.pause()
@@ -110,7 +108,7 @@ class InspectFilm : AppCompatActivity() {
 
                     }
                 }
-                playerController.bigPlayButton.setOnClickListener {
+                big_play.setOnClickListener {
                     if (playerController.playerTracker.state == PlayerConstants.PlayerState.PLAYING) {
                         youTubePlayer.pause()
                         playerController.playStopButton.setImageDrawable(playerController.playDrawable)

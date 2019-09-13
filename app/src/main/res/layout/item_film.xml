@@ -8,12 +8,35 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:background="@android:color/transparent"
 >
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/img_profile"
         android:scaleType="centerCrop"
-        android:layout_width="300px"
-        android:layout_height="450px"
+        android:layout_width="400px"
+        android:layout_height="600px"
         tools:src="@drawable/warfare"
-        app:riv_corner_radius="20dp">
+        app:riv_corner_radius="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+>
 </com.makeramen.roundedimageview.RoundedImageView>
+    <TextView
+            android:id="@+id/tv_film_name"
+            android:layout_below="@id/img_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="@id/img_profile"
+            app:layout_constraintTop_toBottomOf="@id/img_profile"
+            app:layout_constraintEnd_toEndOf="@id/img_profile"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:textColor="#1565c0"
+            tools:text="Call of Duty Modern Warfare2"
+    />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

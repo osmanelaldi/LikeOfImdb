@@ -51,15 +51,6 @@
             app:layout_constraintTop_toTopOf="@+id/stop_play"
             app:layout_constraintEnd_toStartOf="@+id/stop_play" android:layout_marginTop="10dp"
             android:layout_marginStart="32dp"/>
-    <ImageButton
-            android:id="@+id/big_play"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/ic_play"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/panel"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

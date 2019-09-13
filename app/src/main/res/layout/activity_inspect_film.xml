@@ -21,6 +21,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
         />
+        <ImageButton
+                android:id="@+id/big_play"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/ic_play"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/youtube_player"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
         <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/filmlogo"
                 android:layout_height="0dp"

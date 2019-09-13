@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.likeofimdb.InspectFilm
 import com.example.likeofimdb.R
 import com.example.likeofimdb.models.Film
@@ -36,7 +38,8 @@ class FilmRecycler (context: Context, filmList: MutableList<Film>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
-        Picasso.get().load(filmList[position].profileUrl).into(holder.image)
+        Glide.with(context).load(filmList[position].profileUrl).into(holder.image)
+        holder.filmName.text = filmList[position].name
         holder.clickArea.setOnClickListener{
             context.startActivity(Intent(context,InspectFilm::class.java).putExtra("film",filmList[position]))
         }
@@ -44,10 +47,12 @@ class FilmRecycler (context: Context, filmList: MutableList<Film>) : RecyclerVie
 
     class FilmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         internal var image: RoundedImageView
+        internal var filmName : TextView
         internal var clickArea : RelativeLayout
         init {
             this.image=itemView.findViewById(R.id.img_profile) as RoundedImageView
             this.clickArea = itemView.findViewById(R.id.rl_clickArea) as RelativeLayout
+            this.filmName = itemView.findViewById(R.id.tv_film_name) as TextView
         }
     }
 }

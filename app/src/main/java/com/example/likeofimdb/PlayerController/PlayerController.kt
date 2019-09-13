@@ -16,7 +16,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker
 import com.squareup.picasso.Picasso
 
-class PlayerController  (context: Context, customView:View, youTubePlayer: YouTubePlayer,youTubePlayerView: YouTubePlayerView, posterUrl : String ) : AbstractYouTubePlayerListener(){
+class PlayerController  (context: Context, customView:View, youTubePlayer: YouTubePlayer,youTubePlayerView: YouTubePlayerView) : AbstractYouTubePlayerListener(){
     val playerUi:View
     val panel: ImageView
     val context:Context
@@ -26,15 +26,15 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
     val playStopButton:ImageButton
     val forwardButton:ImageButton
     val backwardButton:ImageButton
-    val bigPlayButton:ImageButton
+    //val bigPlayButton:ImageButton
     val playDrawable:Drawable
     val pauseDrawable:Drawable
     var isPlaying:Boolean=false
-    var posterUrl : String
+    //var posterUrl : String
     init {
         this.playerUi=customView
         this.context=context
-        this.posterUrl=posterUrl
+        //this.posterUrl=posterUrl
         this.youTubePlayer=youTubePlayer
         this.youTubePlayerView=youTubePlayerView
         playerTracker= YouTubePlayerTracker()
@@ -43,7 +43,7 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
         playStopButton=customView.findViewById<ImageButton>(R.id.stop_play)
         forwardButton=customView.findViewById(R.id.forward)
         backwardButton=customView.findViewById(R.id.backward)
-        bigPlayButton=customView.findViewById(R.id.big_play)
+        //bigPlayButton=customView.findViewById(R.id.big_play)
         playDrawable=this.context.resources.getDrawable(R.drawable.ic_play)
         pauseDrawable=this.context.resources.getDrawable(R.drawable.ic_pause)
         
@@ -54,7 +54,7 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
             playStopButton.visibility = View.VISIBLE
             forwardButton.visibility = View.VISIBLE
             backwardButton.visibility = View.VISIBLE
-            bigPlayButton.visibility = View.GONE
+            //bigPlayButton.visibility = View.GONE
             panel.setImageResource(android.R.color.transparent)
         }
         else {
@@ -62,8 +62,8 @@ class PlayerController  (context: Context, customView:View, youTubePlayer: YouTu
                 playStopButton.visibility = View.GONE
                 forwardButton.visibility = View.GONE
                 backwardButton.visibility = View.GONE
-                bigPlayButton.visibility = View.VISIBLE
-                Glide.with(context).load(posterUrl).into(panel)
+                //bigPlayButton.visibility = View.VISIBLE
+                //Glide.with(context).load(posterUrl).into(panel)
             }
         }
     }

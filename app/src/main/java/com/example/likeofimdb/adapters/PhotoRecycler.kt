@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.likeofimdb.R
 import com.makeramen.roundedimageview.RoundedImageView
 import com.squareup.picasso.Picasso
@@ -32,7 +33,7 @@ class PhotoRecycler (context: Context,photoList: List<String>?) : RecyclerView.A
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         photoList?.let {
-            Picasso.get().load(it[position]).into(holder.image)
+            Glide.with(context).load(it[position]).into(holder.image)
         }
     }
 
