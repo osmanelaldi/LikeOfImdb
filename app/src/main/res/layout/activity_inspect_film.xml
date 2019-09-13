@@ -11,7 +11,6 @@
             android:id="@+id/constraintlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/youtube_player"
                 android:layout_width="match_parent"
@@ -20,6 +19,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:clickable="false"
+                android:focusable="false"
+        />
+        <ImageView
+                android:id="@+id/iv_main_film_photo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="W,4:5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:clickable="false"
+                android:focusable="false"
+                android:scaleType="centerCrop"
         />
         <ImageButton
                 android:id="@+id/big_play"
@@ -30,7 +43,9 @@
                 app:layout_constraintBottom_toBottomOf="@id/youtube_player"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                android:clickable="false"
+                android:focusable="false"/>
         <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/filmlogo"
                 android:layout_height="0dp"

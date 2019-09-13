@@ -2,6 +2,7 @@ package com.example.likeofimdb
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +27,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_inspect_film.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.constraintlayout
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -53,7 +53,7 @@ class InspectFilm : AppCompatActivity() {
             .into(object : CustomTarget<Bitmap>(){
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                     Palette.from(resource).generate().dominantSwatch?.let {
-
+                        iv_main_film_photo.setImageBitmap(resource)
                         nested_view.setBackgroundColor(it.rgb)
                     }
                 }
@@ -96,6 +96,8 @@ class InspectFilm : AppCompatActivity() {
                     youTubePlayer.cueVideo(it, 0f)
                 }
                 playerController.playStopButton.setOnClickListener {
+                    iv_main_film_photo.setImageResource(Color.TRANSPARENT)
+                    big_play.setImageResource(Color.TRANSPARENT)
                     if (playerController.playerTracker.state == PlayerConstants.PlayerState.PLAYING) {
                         youTubePlayer.pause()
                         playerController.playStopButton.setImageDrawable(playerController.playDrawable)
@@ -109,6 +111,8 @@ class InspectFilm : AppCompatActivity() {
                     }
                 }
                 big_play.setOnClickListener {
+                    iv_main_film_photo.setImageResource(Color.TRANSPARENT)
+                    big_play.setImageResource(Color.TRANSPARENT)
                     if (playerController.playerTracker.state == PlayerConstants.PlayerState.PLAYING) {
                         youTubePlayer.pause()
                         playerController.playStopButton.setImageDrawable(playerController.playDrawable)
